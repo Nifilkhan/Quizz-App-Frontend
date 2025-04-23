@@ -1,10 +1,11 @@
+import { environment } from './../../../environments/environment';
 import { QuizResult } from './../models/answer';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAnswer } from '../models/user-answer';
 import { Observable } from 'rxjs';
 import { Question } from '../models/quiz-model';
-import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
