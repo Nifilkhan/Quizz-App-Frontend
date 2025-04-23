@@ -23,7 +23,7 @@ export class QuizQuestionsComponent implements OnInit {
   result:QuizResult | null = null;
   timer:number = 250;
   interval:any;
-  isTimerRunning:boolean = false;
+  // isTimerRunning:boolean = false;
   isLoading:boolean = false;
   isSubject:boolean = false;
 
@@ -38,21 +38,24 @@ export class QuizQuestionsComponent implements OnInit {
     if(selectedSubject) {
       this.getQuestion(selectedSubject)
     }
+    this.startTimer();
 
     console.log('current state...',state)
   }
 
-  back = '/'
+  back() {
+    this.router.navigate(['/'])
+  }
 
   startTimer() {
-    this.isTimerRunning = true;
+    // this.isTimerRunning = true;
     this.interval = setInterval(() => {
       if(this.timer > 0) {
         this.timer--;
       }else {
         clearInterval(this.interval);
         this.submitQuiz();
-        this.isTimerRunning = false;
+        // this.isTimerRunning = false;
       }
     },1000)
   }
@@ -96,7 +99,7 @@ export class QuizQuestionsComponent implements OnInit {
     this.questionService.submitQuiz(finalPayload).subscribe({
       next:(value) => {
         console.log(value.answer);
-        sessionStorage.setItem('quizResult','true');
+        sessionStorage.setItem('quizCompleted','true');
         this.result = value.answer;
         this.isLoading = false;
         this.router.navigate(['/quiz-result'],{state:{result:value.answer}})

@@ -1,6 +1,10 @@
 <div [class.dark-mode]="isDarkMode" class="quiz-container" *ngIf="questions.length > 0">
-  <div class="toggle-container">
+  <button class="back-button" title="Go back" (click)="back()">
     <i class="fa-solid fa-angle-left"></i>
+    <span class="back-label">Go Back</span>
+  </button>
+
+    <div class="toggle-container">
         <span class="toggle-back"></span>
     <label class="switch">
       <input type="checkbox" [(ngModel)]="isDarkMode" />
@@ -14,9 +18,7 @@
 
   <h2 class="heading">Quiz Questions</h2>
   <div class="timer-container">
-    <button (click)="startTimer()" class="start-quiz">Start Quiz</button>
-
-    <div class="timer-box" *ngIf="isTimerRunning">
+    <div class="timer-box">
       <p>⏳ Time Left: {{ displayTime }}</p>
     </div>
   </div>
@@ -80,7 +82,7 @@
     </ul>
   </div>
 
-  <button (click)="submitQuiz()" class="submit-button">Submit Quiz</button>
+  <button (click)="submitQuiz()" [disabled]="question.length !== questions.length" class="submit-button">Submit Quiz</button>
 </div>
 
 
