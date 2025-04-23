@@ -18,10 +18,10 @@ export class QuizService {
   readonly quiz = '/api/quiz'
 
   getQuestion(category:string):Observable<{quiz:Question[]}> {
-    return this.http.get<{quiz:Question[]}>(`${this.api_url}${this.quiz}/quiz/random-questions/${category}`)
+    return this.http.get<{quiz:Question[]}>(`${this.api_url}${this.quiz}/random-questions/${category}`)
   }
 
   submitQuiz(answer:UserAnswer[]):Observable<{answer:QuizResult}> {
-    return this.http.post<{answer:QuizResult}>(`${this.api_url}${this.quiz}/quiz/submit-quiz`,answer)
+    return this.http.post<{answer:QuizResult}>(`${this.api_url}${this.quiz}/submit-quiz`,answer)
   }
 }
