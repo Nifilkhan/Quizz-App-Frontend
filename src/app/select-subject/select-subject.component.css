@@ -1,0 +1,65 @@
+.subject-selection {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.subject-selection h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-subject {
+  background: white;
+  border: none;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  transition: all 0.3s ease;
+}
+
+.btn-subject .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.btn-subject .label {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.btn-subject:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  background-color: #f0f8ff;
+}
+
+/* Optional: Add subject-specific colors */
+.btn-subject.html .icon {
+  color: #e34c26;
+}
+
+.btn-subject.chemistry .icon {
+  color: #00796b;
+}
+
+.btn-subject.physics .icon {
+  color: #3f51b5;
+}
+
+.btn-subject.biology .icon {
+  color: #388e3c;
+}

@@ -1,0 +1,29 @@
+<div class="result-wrapper" *ngIf="result">
+  <h2 class="result-heading">🎉 Quiz Result</h2>
+  <div class="score-box">
+    <p>You scored</p>
+    <h1>{{ result.score }} / {{ result.totalLength }}</h1>
+  </div>
+
+  <div *ngFor="let item of result.finalResult; let i = index" class="result-card">
+    <h4>Q{{ i + 1 }}. {{ item.question }}</h4>
+    <p><strong>Your Answer:</strong>
+      <span [ngClass]="{ correct: item.isCorrect, incorrect: !item.isCorrect }">
+        {{ item.selectedAnswer | uppercase }}.
+        {{ item.options[item.selectedAnswer] }}
+      </span>
+    </p>
+
+    <p *ngIf="!item.isCorrect">
+      <strong>Correct Answer:</strong>
+      <span class="correct">
+        {{ item.correctAnswer | uppercase }}.
+        {{ item.options[item.correctAnswer] }}
+      </span>
+    </p>
+
+    <p class="result-icon">
+      {{ item.isCorrect ? '✔ Correct' : '❌ Incorrect' }}
+    </p>
+  </div>
+</div>

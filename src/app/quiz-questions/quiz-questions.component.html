@@ -1,0 +1,89 @@
+<div [class.dark-mode]="isDarkMode" class="quiz-container" *ngIf="questions.length > 0">
+  <div class="toggle-container">
+    <i class="fa-solid fa-angle-left"></i>
+        <span class="toggle-back"></span>
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="isDarkMode" />
+      <span class="slider round"></span>
+    </label>
+
+    <span class="toggle-label">{{
+      isDarkMode ? "Dark Mode" : "Light Mode"
+    }}</span>
+  </div>
+
+  <h2 class="heading">Quiz Questions</h2>
+  <div class="timer-container">
+    <button (click)="startTimer()" class="start-quiz">Start Quiz</button>
+
+    <div class="timer-box" *ngIf="isTimerRunning">
+      <p>⏳ Time Left: {{ displayTime }}</p>
+    </div>
+  </div>
+
+  <div *ngFor="let question of questions; let i = index" class="question-card">
+    <h4 class="question-title">Q{{ i + 1 }}. {{ question.question }}</h4>
+
+    <ul class="option-list">
+      <li>
+        <label class="option-label">
+          <input
+            type="radio"
+            class="option-input"
+            id="a{{ i }}"
+            name="question{{ i }}"
+            value="a"
+            (change)="selectedAnswer(i, 'a')"
+          />
+          <span>A. {{ question.options.a }}</span>
+        </label>
+      </li>
+      <li>
+        <label class="option-label">
+          <input
+            type="radio"
+            class="option-input"
+            id="b{{ i }}"
+            name="question{{ i }}"
+            value="b"
+            (change)="selectedAnswer(i, 'b')"
+          />
+          <span>B. {{ question.options.b }}</span>
+        </label>
+      </li>
+      <li>
+        <label class="option-label">
+          <input
+            type="radio"
+            class="option-input"
+            id="c{{ i }}"
+            name="question{{ i }}"
+            value="c"
+            (change)="selectedAnswer(i, 'c')"
+          />
+          <span>C. {{ question.options.c }}</span>
+        </label>
+      </li>
+      <li>
+        <label class="option-label">
+          <input
+            type="radio"
+            class="option-input"
+            id="d{{ i }}"
+            name="question{{ i }}"
+            value="d"
+            (change)="selectedAnswer(i, 'd')"
+          />
+          <span>D. {{ question.options.d }}</span>
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <button (click)="submitQuiz()" class="submit-button">Submit Quiz</button>
+</div>
+
+
+<app-select-subject (selectSubject)="getQuestion($event)" *ngIf="isSubject"></app-select-subject>
+
+<app-loader-component *ngIf="isLoading"></app-loader-component>
